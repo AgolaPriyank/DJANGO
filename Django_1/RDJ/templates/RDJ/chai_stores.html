@@ -1,0 +1,25 @@
+{% extends "layout.html" %} {% block content %} content for forms
+
+<form class="text-red-800 text-center" method="POST">
+  {% csrf_token %} {{form.as_p}}
+
+  <button
+    class="text-center mt-10 justify-center bg-slate-50 rounded p-3  border-green-400 border-4"
+    type="submit"
+  >
+    Search Store
+  </button>
+</form>
+
+{% if stores %}
+<h2 class="text-red-800 text-center mt-8 bg-slate-50 " >Stores is available</h2>
+
+<ul class="text-red-800 text-center mt-8 bg-slate-50" >
+  {% for store in stores %}
+
+  <li>{{store.name}} - {{store.location}}</li>
+
+  {% endfor %}
+</ul>
+
+{% endif %} {% endblock %}
